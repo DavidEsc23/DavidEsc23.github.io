@@ -15,6 +15,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 /* Animación del fondo */
@@ -30,43 +31,52 @@ body {
   max-width: 600px;
   padding: 20px;
   position: relative;
+  z-index: 1; /* Sobre el fondo de corazones */
 }
 
+/* Título con animaciones combinadas */
 h1 {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   color: #d63384;
   margin-bottom: 60px;
   font-size: 2.5em;
-  animation: bounce 2s ease, floatTitle 3s ease-in-out infinite 2s;
+  animation: bounce 2s ease, floatTitle 3s ease-in-out infinite 2s, heartbeat 1.5s infinite;
 }
 
-/* Animación de rebote inicial */
+/* Rebote inicial */
 @keyframes bounce {
   0% { transform: translateY(-50px); opacity: 0; }
   50% { transform: translateY(10px); opacity: 1; }
   100% { transform: translateY(0); }
 }
 
-/* Animación de flotación sin rotar */
+/* Flotación suave */
 @keyframes floatTitle {
-  0%   { transform: translateY(0); }
-  25%  { transform: translateY(-10px); }
-  50%  { transform: translateY(0); }
-  75%  { transform: translateY(-5px); }
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-10px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-5px); }
   100% { transform: translateY(0); }
 }
 
-/* Contenedor para los botones */
+/* Latido */
+@keyframes heartbeat {
+  0% { transform: scale(1); text-shadow: 0 0 10px #ff66a3; }
+  25% { transform: scale(1.1); text-shadow: 0 0 15px #ff66a3; }
+  50% { transform: scale(1.2); text-shadow: 0 0 20px #ff66a3; }
+  75% { transform: scale(1.1); text-shadow: 0 0 15px #ff66a3; }
+  100% { transform: scale(1); text-shadow: 0 0 10px #ff66a3; }
+}
+
+/* Botones */
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  height: auto;
   padding-bottom: 20px;
 }
 
-/* Estilos comunes para botones */
 button {
   font-size: 20px;
   padding: 10px 20px;
@@ -91,13 +101,13 @@ button {
   color: white;
 }
 
-/* Cuando el botón "No" entra en modo huida */
+/* Modo huida para el botón "No" */
 #noBtn.move {
   position: absolute;
   z-index: 999;
 }
 
-/* Clases para ocultar elementos */
+/* Ocultar elementos */
 .hidden {
   display: none;
 }
@@ -115,7 +125,7 @@ button {
   to   { opacity: 1; }
 }
 
-/* Estilo para la imagen flotante que aparece tras varios hovers en "No" */
+/* Imagen flotante (sorpresa) */
 #floatingImage {
   margin-bottom: 20px;
   opacity: 0;
@@ -126,35 +136,29 @@ button {
   animation: fadeIn 2s forwards;
 }
 
-/* GIF izquierdo: centrado verticalmente en el lado izquierdo */
-#leftGif {
-  position: fixed;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 400px;
-}
-
-#leftGif img {
-  width: 100%;
-  height: auto;
-}
-
-/* GIF derecho: centrado verticalmente en el lado derecho */
+/* GIFs laterales */
+#leftGif,
 #rightGif {
   position: fixed;
-  right: 20px;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 400px;
+  max-width: 300px;
 }
 
+#leftGif {
+  left: 20px;
+}
+
+#rightGif {
+  right: 20px;
+}
+
+#leftGif img,
 #rightGif img {
   width: 100%;
   height: auto;
 }
 
-/* Clases para mostrar los GIFs con efecto fade in */
 .hiddenGif {
   display: none;
 }
@@ -162,4 +166,44 @@ button {
 .showGif {
   display: block;
   animation: fadeIn 1s forwards;
+}
+
+/* =========================================
+   Corazones flotantes
+   ========================================= */
+#hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  animation: floatHeart linear forwards;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  50% {
+    transform: translateY(-150px) translateX(20px) scale(1) rotate(15deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateY(-300px) translateX(-20px) scale(1.1) rotate(-15deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-500px) translateX(0px) scale(1.2) rotate(0deg);
+    opacity: 0;
+  }
 }

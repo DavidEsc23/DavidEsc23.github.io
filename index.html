@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>¿Quieres ser mi San Valentín?</title>
-  <link rel="stylesheet" href="style.css">
+
   <!-- Fuente romántica para el título -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Contenedor para los corazones flotantes -->
+  <div id="hearts-container"></div>
+
   <div class="container">
-    <!-- Imagen que aparece tras varios hovers sobre "No" -->
+    <!-- Imagen sorpresa que se muestra tras varios hovers en "No" -->
     <div id="floatingImage" class="hidden">
-      <img src="perrito.webp" alt="Sorpresa">
+      <img src="perrito.webp" alt="Sorpresa" />
     </div>
+
     <h1>¿Quieres ser mi San Valentín?</h1>
+
     <div class="buttons">
-      <button id="yesBtn">¡Claro que si!</button>
-      <button id="noBtn">No, hueles feo</button>
+      <button id="yesBtn">¡Claro que si! 🥰</button>
+      <button id="noBtn">No, hueles feo 🤮</button>
     </div>
+
     <div id="message" class="hidden">
       <p>¡Gracias por aceptarme, te amo mi mochi hermosa!</p>
     </div>
   </div>
-  
+
   <!-- GIF a la izquierda -->
   <div id="leftGif" class="hiddenGif">
-    <img src="Dance Cat GIF.gif" alt="GIF Izquierdo">
+    <img src="Dance Cat GIF.gif" alt="GIF Izquierdo" />
   </div>
+
   <!-- GIF a la derecha -->
   <div id="rightGif" class="hiddenGif">
-    <img src="mowii.gif" alt="GIF Derecho">
+    <img src="mowii.gif" alt="GIF Derecho" />
   </div>
-  
+
+  <!-- Librería de confeti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- Nuestro JS -->
   <script src="script.js"></script>
 </body>
 </html>
