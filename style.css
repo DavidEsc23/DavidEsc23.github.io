@@ -1,0 +1,165 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* Fondo degradado animado */
+  background: linear-gradient(45deg, #ffe6f2, #ffccf2);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Animación del fondo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  color: #d63384;
+  margin-bottom: 60px;
+  font-size: 2.5em;
+  animation: bounce 2s ease, floatTitle 3s ease-in-out infinite 2s;
+}
+
+/* Animación de rebote inicial */
+@keyframes bounce {
+  0% { transform: translateY(-50px); opacity: 0; }
+  50% { transform: translateY(10px); opacity: 1; }
+  100% { transform: translateY(0); }
+}
+
+/* Animación de flotación sin rotar */
+@keyframes floatTitle {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(-10px); }
+  50%  { transform: translateY(0); }
+  75%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* Contenedor para los botones */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+/* Estilos comunes para botones */
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#yesBtn {
+  background-color: #ff66a3;
+  color: white;
+}
+
+#yesBtn:hover {
+  background-color: #ff3385;
+  transform: scale(1.1);
+}
+
+#noBtn {
+  background-color: #999;
+  color: white;
+}
+
+/* Cuando el botón "No" entra en modo huida */
+#noBtn.move {
+  position: absolute;
+  z-index: 999;
+}
+
+/* Clases para ocultar elementos */
+.hidden {
+  display: none;
+}
+
+/* Mensaje de confirmación */
+#message {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #d63384;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Estilo para la imagen flotante que aparece tras varios hovers en "No" */
+#floatingImage {
+  margin-bottom: 20px;
+  opacity: 0;
+}
+
+#floatingImage.fade-in {
+  display: block;
+  animation: fadeIn 2s forwards;
+}
+
+/* GIF izquierdo: centrado verticalmente en el lado izquierdo */
+#leftGif {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 400px;
+}
+
+#leftGif img {
+  width: 100%;
+  height: auto;
+}
+
+/* GIF derecho: centrado verticalmente en el lado derecho */
+#rightGif {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 400px;
+}
+
+#rightGif img {
+  width: 100%;
+  height: auto;
+}
+
+/* Clases para mostrar los GIFs con efecto fade in */
+.hiddenGif {
+  display: none;
+}
+
+.showGif {
+  display: block;
+  animation: fadeIn 1s forwards;
+}
